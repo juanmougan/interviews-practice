@@ -1,5 +1,6 @@
 package com.github.juanmougan;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,7 @@ public class SolutionDonuts {
 
     public List<String[]> matchDonuts(List<String[]> donutConstraintPairs, List<String[]> candidateConstraintPairs) {
 
+        // Convert the List of lists to a Map
         Map<String, List<String>> availableDonuts = categorizeDonuts(donutConstraintPairs);
 
         // Create each person choice
@@ -109,8 +111,16 @@ public class SolutionDonuts {
      * @return a Map which key is a donut type, and value is the List of existing donuts
      */
     Map<String, List<String>> categorizeDonuts(List<String[]> donutConstraintPairs) {
-        // TODO
-        return null;
+        Map<String, List<String>> categorisedDonuts = new HashMap<>();
+        for (String[] donutPair : donutConstraintPairs) {
+            List<String> donutsForCategory = categorisedDonuts.get(donutPair[1]);
+            if (donutsForCategory == null) {
+                donutsForCategory = new ArrayList<>();
+            }
+            donutsForCategory.add(donutPair[0]);
+            categorisedDonuts.put(donutPair[1], donutsForCategory);
+        }
+        return categorisedDonuts;
     }
 
 }
