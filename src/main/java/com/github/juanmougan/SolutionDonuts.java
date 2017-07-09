@@ -39,7 +39,6 @@ import java.util.Map;
  *  [mary, eclair]]
  *
  */
-
 public class SolutionDonuts {
 
     public List<String[]> matchDonuts(List<String[]> donutConstraintPairs, List<String[]> candidateConstraintPairs) {
@@ -49,11 +48,7 @@ public class SolutionDonuts {
         // Create each person choice
         Map<String, List<String>> personLikedDonuts = allDonutsLikedByPerson(candidateConstraintPairs, availableDonuts);
 
-        // Flatten the Map so it now is
-        // [name1, choice1]
-        // [name1, choice2]
-        // [name1, choice1]
-        // So, repeated types for a given person are separated
+        // Flatten the Map so repeated types for a given person are separated
         List<String[]> unsortedResult = flattenChoicesList(personLikedDonuts);
 
         // Sort the result
@@ -62,14 +57,41 @@ public class SolutionDonuts {
         return sortedResult;
     }
 
+    /**
+     * Sorts the result list, first by person name, then by donut name
+     * @param unsortedResult unsorted list
+     * @return List sorted by person, then by donut
+     */
     private List<String[]> sortByPersonNameAndDonutName(List<String[]> unsortedResult) {
         return null;
     }
 
+    /**
+     * Flatten the Map so it changes from this
+     * [name1, [choice1, choice2, ..., choicen]]
+     * [name2, [choice1]]
+     *
+     * to this
+     * [name1, choice1]
+     * [name1, choice2]
+     * ...
+     * [name1, choicen]
+     * [name2, choice1]
+     *
+     * So, repeated types for a given person are separated
+     * @param personLikedDonuts Map with each person's name and the list of donuts he likes.
+     * @return List with pairs [person name, donut] grouped by person
+     */
     private List<String[]> flattenChoicesList(Map<String, List<String>> personLikedDonuts) {
         return null;
     }
 
+    /**
+     * Converts all people's pairs to a Map containing each person as the key, and all the donuts he likes as the value.
+     * @param candidateConstraintPairs List containing all people donut's choices
+     * @param availableDonuts List with each donut and its category
+     * @return a Map with each person and the list of donuts he likes.
+     */
     private Map<String, List<String>> allDonutsLikedByPerson(List<String[]> candidateConstraintPairs,
                                                              Map<String, List<String>> availableDonuts) {
         Map<String, List<String>> personLikedDonuts = new HashMap<>();
