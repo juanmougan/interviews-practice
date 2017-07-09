@@ -47,14 +47,16 @@ public class SolutionDonuts {
         Map<String, List<String>> availableDonuts = categorizeDonuts(donutConstraintPairs);
 
         // Create each person choice
-        Map<String, List<String>> personLikedDonuts = new HashMap<>();
-        for (String[] personChoice : candidateConstraintPairs) {
-            // This would be e.g. [john, eclair]
-            List<String> donutsLiked = availableDonuts.get(personChoice[1]);
-            personLikedDonuts.put(personChoice[0], donutsLiked);
-        }
+        Map<String, List<String>> personLikedDonuts = allDonutsLikedByPerson(candidateConstraintPairs, availableDonuts);
 
-        List<String[]> unsortedResult = null;
+        // Flatten the Map so it now is
+        // [name1, choice1]
+        // [name1, choice2]
+        // [name1, choice1]
+        // So, repeated types for a given person are separated
+        List<String[]> unsortedResult = flattenChoicesList(personLikedDonuts);
+
+        // Sort the result
         List<String[]> sortedResult = sortByPersonNameAndDonutName(unsortedResult);
 
         return sortedResult;
@@ -62,6 +64,21 @@ public class SolutionDonuts {
 
     private List<String[]> sortByPersonNameAndDonutName(List<String[]> unsortedResult) {
         return null;
+    }
+
+    private List<String[]> flattenChoicesList(Map<String, List<String>> personLikedDonuts) {
+        return null;
+    }
+
+    private Map<String, List<String>> allDonutsLikedByPerson(List<String[]> candidateConstraintPairs,
+                                                             Map<String, List<String>> availableDonuts) {
+        Map<String, List<String>> personLikedDonuts = new HashMap<>();
+        for (String[] personChoice : candidateConstraintPairs) {
+            // This would be e.g. [john, eclair]
+            List<String> donutsLiked = availableDonuts.get(personChoice[1]);
+            personLikedDonuts.put(personChoice[0], donutsLiked);
+        }
+        return personLikedDonuts;
     }
 
     /**
