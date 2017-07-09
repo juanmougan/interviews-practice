@@ -62,7 +62,7 @@ public class SolutionDonuts {
      * @param unsortedResult unsorted list
      * @return List sorted by person, then by donut
      */
-    private List<String[]> sortByPersonNameAndDonutName(List<String[]> unsortedResult) {
+    List<String[]> sortByPersonNameAndDonutName(List<String[]> unsortedResult) {
         return null;
     }
 
@@ -82,7 +82,7 @@ public class SolutionDonuts {
      * @param personLikedDonuts Map with each person's name and the list of donuts he likes.
      * @return List with pairs [person name, donut] grouped by person
      */
-    private List<String[]> flattenChoicesList(Map<String, List<String>> personLikedDonuts) {
+    List<String[]> flattenChoicesList(Map<String, List<String>> personLikedDonuts) {
         return null;
     }
 
@@ -92,7 +92,7 @@ public class SolutionDonuts {
      * @param availableDonuts List with each donut and its category
      * @return a Map with each person and the list of donuts he likes.
      */
-    private Map<String, List<String>> allDonutsLikedByPerson(List<String[]> candidateConstraintPairs,
+    Map<String, List<String>> allDonutsLikedByPerson(List<String[]> candidateConstraintPairs,
                                                              Map<String, List<String>> availableDonuts) {
         Map<String, List<String>> personLikedDonuts = new HashMap<>();
         for (String[] personChoice : candidateConstraintPairs) {
@@ -108,7 +108,7 @@ public class SolutionDonuts {
      * @param donutConstraintPairs the List of pairs [donut name, donut type]
      * @return a Map which key is a donut type, and value is the List of existing donuts
      */
-    private Map<String, List<String>> categorizeDonuts(List<String[]> donutConstraintPairs) {
+    Map<String, List<String>> categorizeDonuts(List<String[]> donutConstraintPairs) {
         // TODO
         return null;
     }
