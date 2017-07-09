@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * The input is a list of pairs of donut name, donut type
@@ -52,7 +51,7 @@ public class SolutionDonuts {
         Map<String, List<String>> personLikedDonuts = allDonutsLikedByPerson(candidateConstraintPairs, availableDonuts);
 
         // Flatten the Map so repeated types for a given person are separated
-        List<String[]> unsortedResult = flattenChoicesList(personLikedDonuts);
+        List<String[]> unsortedResult = unGroupChoicesList(personLikedDonuts);
 
         // Sort the result
         List<String[]> sortedResult = sortByPersonNameAndDonutName(unsortedResult);
@@ -70,7 +69,7 @@ public class SolutionDonuts {
     }
 
     /**
-     * Flatten the Map so it changes from this
+     * Un-groups the Map so it changes from this
      * [name1, [choice1, choice2, ..., choicen]]
      * [name2, [choice1]]
      *
@@ -85,7 +84,7 @@ public class SolutionDonuts {
      * @param personLikedDonuts Map with each person's name and the list of donuts he likes.
      * @return List with pairs [person name, donut] grouped by person
      */
-    List<String[]> flattenChoicesList(Map<String, List<String>> personLikedDonuts) {
+    List<String[]> unGroupChoicesList(Map<String, List<String>> personLikedDonuts) {
         return null;
     }
 

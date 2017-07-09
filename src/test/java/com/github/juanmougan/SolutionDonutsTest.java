@@ -32,7 +32,26 @@ public class SolutionDonutsTest {
 
     @Test
     public void testFlattenChoicesList() throws Exception {
+        // Given
+        //[name1, [choice1, choice2, ..., choicen]]
+        Map<String, List<String>> personLikedDonuts = new HashMap<>();
+        List<String> joseList = new ArrayList<>(Arrays.asList("cruller"));
+        personLikedDonuts.put("jose", joseList);
+        ArrayList<String> johnList = new ArrayList<>(Arrays.asList("eclair"));
+        personLikedDonuts.put("john", johnList);
+        ArrayList<String> maryList = new ArrayList<>(Arrays.asList("cruller, eclair"));
+        personLikedDonuts.put("mary", maryList);
 
+        // When
+        List<String[]> actualLikedDonuts = solutionDonuts.unGroupChoicesList(personLikedDonuts);
+
+        // Then
+        List<String[]> expectedLikedDonuts = new ArrayList<>();
+        expectedLikedDonuts.add(new String[]{"jose", "cruller"});
+        expectedLikedDonuts.add(new String[]{"john", "eclair"});
+        expectedLikedDonuts.add(new String[]{"mary", "cruller"});
+        expectedLikedDonuts.add(new String[]{"mary", "eclair"});
+        assertEquals(expectedLikedDonuts, actualLikedDonuts);
     }
 
     @Test
