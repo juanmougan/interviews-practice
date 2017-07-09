@@ -99,7 +99,13 @@ public class SolutionDonuts {
         Map<String, List<String>> personLikedDonuts = new HashMap<>();
         for (String[] personChoice : candidateConstraintPairs) {
             // This would be e.g. [john, eclair]
-            List<String> donutsLiked = availableDonuts.get(personChoice[1]);
+            String typeLiked = personChoice[1];
+            List<String> donutsLiked = new ArrayList<>();
+            if (typeLiked == "*") {
+                donutsLiked.addAll(availableDonuts.keySet());
+            } else {
+                donutsLiked = availableDonuts.get(typeLiked);
+            }
             personLikedDonuts.put(personChoice[0], donutsLiked);
         }
         return personLikedDonuts;
