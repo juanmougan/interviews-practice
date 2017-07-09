@@ -4,10 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -39,8 +36,35 @@ public class SolutionDonutsTest {
     }
 
     @Test
-    public void testAllDonutsLikedByPerson() throws Exception {
+    public void testAllDonutsLikedByPerson_LikesAll() throws Exception {
+        // Given
+        Map<String, List<String>> availableDonuts = new HashMap<>();
+        List<String> veganDonuts = new ArrayList<>(Arrays.asList("cruller"));
+        availableDonuts.put("vegan", veganDonuts);
+        List<String> chocolateDonuts = new ArrayList<>(Arrays.asList("eclair"));
+        availableDonuts.put("chocolate", chocolateDonuts);
 
+        List<String[]> candidatePairs = new ArrayList<>();
+        String[] jose = new String[]{"jose", "vegan"};
+        String[] john = new String[]{"john", "chocolate"};
+        String[] mary = new String[]{"mary", "*"};
+        candidatePairs.add(jose);
+        candidatePairs.add(john);
+        candidatePairs.add(mary);
+
+        // When
+        Map<String, List<String>> donutsByPerson = solutionDonuts.allDonutsLikedByPerson(candidatePairs, availableDonuts);
+
+        // Then
+        Map<String, List<String>> expectedDonuts = new HashMap<>();
+        List<String> joseList = new ArrayList<>(Arrays.asList("cruller"));
+        expectedDonuts.put("jose", joseList);
+        List<String> johnList = new ArrayList<>(Arrays.asList("eclair"));
+        expectedDonuts.put("john", johnList);
+        List<String> maryList = new ArrayList<>(Arrays.asList("cruller", "eclair"));
+        expectedDonuts.put("mary", maryList);
+
+        assertEquals(expectedDonuts, donutsByPerson);
     }
 
     @Test

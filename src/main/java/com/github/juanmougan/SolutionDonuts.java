@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * The input is a list of pairs of donut name, donut type
@@ -102,7 +103,8 @@ public class SolutionDonuts {
             String typeLiked = personChoice[1];
             List<String> donutsLiked = new ArrayList<>();
             if (typeLiked == "*") {
-                donutsLiked.addAll(availableDonuts.keySet());
+                List<List<String>> listOfList = new ArrayList(availableDonuts.values());
+                donutsLiked.addAll(listOfList.stream().collect(ArrayList::new, List::addAll, List::addAll));
             } else {
                 donutsLiked = availableDonuts.get(typeLiked);
             }
