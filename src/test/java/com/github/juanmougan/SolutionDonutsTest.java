@@ -39,7 +39,7 @@ public class SolutionDonutsTest {
         personLikedDonuts.put("jose", joseList);
         ArrayList<String> johnList = new ArrayList<>(Arrays.asList("eclair"));
         personLikedDonuts.put("john", johnList);
-        ArrayList<String> maryList = new ArrayList<>(Arrays.asList("cruller, eclair"));
+        ArrayList<String> maryList = new ArrayList<>(Arrays.asList("cruller", "eclair"));
         personLikedDonuts.put("mary", maryList);
 
         // When
