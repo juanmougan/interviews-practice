@@ -46,12 +46,11 @@ public class SolutionDonutsTest {
         List<String[]> actualLikedDonuts = solutionDonuts.unGroupChoicesList(personLikedDonuts);
 
         // Then
-        List<String[]> expectedLikedDonuts = new ArrayList<>();
-        expectedLikedDonuts.add(new String[]{"jose", "cruller"});
-        expectedLikedDonuts.add(new String[]{"john", "eclair"});
-        expectedLikedDonuts.add(new String[]{"mary", "cruller"});
-        expectedLikedDonuts.add(new String[]{"mary", "eclair"});
-        assertEquals(expectedLikedDonuts, actualLikedDonuts);
+        assertEquals(4, actualLikedDonuts.size());
+        assertTrue(actualLikedDonuts.stream().anyMatch(e -> e[0].equals("jose") && e[1].equals("cruller")));
+        assertTrue(actualLikedDonuts.stream().anyMatch(e -> e[0].equals("john") && e[1].equals("eclair")));
+        assertTrue(actualLikedDonuts.stream().anyMatch(e -> e[0].equals("mary") && e[1].equals("cruller")));
+        assertTrue(actualLikedDonuts.stream().anyMatch(e -> e[0].equals("mary") && e[1].equals("eclair")));
     }
 
     @Test
