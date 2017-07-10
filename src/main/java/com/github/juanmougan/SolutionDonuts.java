@@ -85,7 +85,15 @@ public class SolutionDonuts {
      * @return List with pairs [person name, donut] grouped by person
      */
     List<String[]> unGroupChoicesList(Map<String, List<String>> personLikedDonuts) {
-        return null;
+        List<String[]> unGroupedList = new ArrayList<>();
+        for (String person : personLikedDonuts.keySet()) {
+            List<String> personChoices = personLikedDonuts.get(person);
+            for (String choice : personChoices) {
+                String[] personPair = new String[]{person, choice};
+                unGroupedList.add(personPair);
+            }
+        }
+        return unGroupedList;
     }
 
     /**
