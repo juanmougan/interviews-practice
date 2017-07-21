@@ -28,7 +28,25 @@ public class SolutionDonutsTest {
 
     @Test
     public void testSortByPersonNameAndDonutName() throws Exception {
+        // Given
+        List<String[]> donutConstraintPairs = new ArrayList<>();
+        donutConstraintPairs.add(new String[]{"cruller", "vegan"});
+        donutConstraintPairs.add(new String[]{"eclair", "chocolate"});
 
+        List<String[]> candidateConstraintPairs = new ArrayList<>();
+        candidateConstraintPairs.add(new String[]{"jose", "vegan"});
+        candidateConstraintPairs.add(new String[]{"john", "chocolate"});
+        candidateConstraintPairs.add(new String[]{"mary", "*"});
+
+        // When
+        List<String[]> solution = solutionDonuts.matchDonuts(donutConstraintPairs, candidateConstraintPairs);
+
+        // Then
+        assertEquals(4, solution.size());
+        assertTrue(solution.stream().anyMatch(e -> e[0].equals("john") && e[1].equals("eclair")));
+        assertTrue(solution.stream().anyMatch(e -> e[0].equals("jose") && e[1].equals("cruller")));
+        assertTrue(solution.stream().anyMatch(e -> e[0].equals("mary") && e[1].equals("cruller")));
+        assertTrue(solution.stream().anyMatch(e -> e[0].equals("mary") && e[1].equals("eclair")));
     }
 
     @Test

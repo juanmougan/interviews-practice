@@ -1,9 +1,6 @@
 package com.github.juanmougan;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The input is a list of pairs of donut name, donut type
@@ -65,7 +62,19 @@ public class SolutionDonuts {
      * @return List sorted by person, then by donut
      */
     List<String[]> sortByPersonNameAndDonutName(List<String[]> unsortedResult) {
-        // TODO sort
+        Collections.sort(unsortedResult, (a, b) -> {
+            String x1 = a[0];
+            String x2 = b[0];
+            int sComp = x1.compareTo(x2);
+
+            if (sComp != 0) {
+                return sComp;
+            } else {
+                String y1 = a[1];
+                String y2 = b[1];
+                return y1.compareTo(y2);
+            }
+        });
         return unsortedResult;
     }
 
