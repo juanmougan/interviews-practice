@@ -31,4 +31,18 @@ class SolutionPolygonTest extends GroovyTestCase {
 
         assertFalse(solution.isSquare(polygon))
     }
+
+    void testIsRectangleForRectangle() {
+        def polygon = [3, 1, 3, 1]
+        def solution = new SolutionPolygon()
+
+        assertTrue(solution.isRectangle(polygon))
+    }
+
+    void testIsRectangleNotRectangle() {
+        def polygon = [3, 2, 3, 1]
+        def solution = new SolutionPolygon()
+
+        assertFalse(solution.isRectangle(polygon))
+    }
 }
