@@ -15,13 +15,16 @@ class SolutionPolygon {
     }
 
     def countPolygon(polygon) {
-        if(anyNegative(polygon)) return
-        if(isSquare(polygon)) {
-            counter['squares'] = counter['squares'] + 1
-        } else if(isRectangle(polygon)) {
-            counter['rectangles'] = counter['rectangles'] + 1
-        } else {
+        if(anyNegative(polygon)) {
             counter['neither'] = counter['neither'] + 1
+        } else {
+            if(isSquare(polygon)) {
+                counter['squares'] = counter['squares'] + 1
+            } else if(isRectangle(polygon)) {
+                counter['rectangles'] = counter['rectangles'] + 1
+            } else {
+                counter['neither'] = counter['neither'] + 1
+            }
         }
     }
 

@@ -87,6 +87,22 @@ class SolutionPolygonTest extends GroovyTestCase {
 
         assertEquals(0, solution.counter['squares'])
         assertEquals(0, solution.counter['rectangles'])
-        assertEquals(0, solution.counter['neither'])
+        assertEquals(1, solution.counter['neither'])
     }
+
+    void testCountPolygons() {
+        def polygons = [[36, 30, 36, 30],
+                        [15, 15, 15, 15],
+                        [46, 96, 90, 100],
+                        [86, 86, 86, 86],
+                        [100, 200, 100, 200],
+                        [-100, 200, -100, 200]]
+        def solution = new SolutionPolygon()
+        def expected = ['squares': 2, 'rectangles': 2, 'neither': 2]
+
+        def actual = solution.countPolygons(polygons)
+
+        assertEquals(expected, actual)
+    }
+
 }
