@@ -45,4 +45,48 @@ class SolutionPolygonTest extends GroovyTestCase {
 
         assertFalse(solution.isRectangle(polygon))
     }
+
+    void testCountPolygonNeither() {
+        def polygon = [3, 2, 3, 1]
+        def solution = new SolutionPolygon()
+
+        solution.countPolygon(polygon)
+
+        assertEquals(1, solution.counter['neither'])
+        assertEquals(0, solution.counter['squares'])
+        assertEquals(0, solution.counter['rectangles'])
+    }
+
+    void testCountPolygonRectangle() {
+        def polygon = [3, 2, 3, 2]
+        def solution = new SolutionPolygon()
+
+        solution.countPolygon(polygon)
+
+        assertEquals(1, solution.counter['rectangles'])
+        assertEquals(0, solution.counter['squares'])
+        assertEquals(0, solution.counter['neither'])
+    }
+
+    void testCountPolygonSquare() {
+        def polygon = [3, 3, 3, 3]
+        def solution = new SolutionPolygon()
+
+        solution.countPolygon(polygon)
+
+        assertEquals(1, solution.counter['squares'])
+        assertEquals(0, solution.counter['rectangles'])
+        assertEquals(0, solution.counter['neither'])
+    }
+
+    void testCountPolygonWithNegative() {
+        def polygon = [3, 3, 3, -3]
+        def solution = new SolutionPolygon()
+
+        solution.countPolygon(polygon)
+
+        assertEquals(0, solution.counter['squares'])
+        assertEquals(0, solution.counter['rectangles'])
+        assertEquals(0, solution.counter['neither'])
+    }
 }

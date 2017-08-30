@@ -15,7 +15,6 @@ class SolutionPolygon {
     }
 
     def countPolygon(polygon) {
-        println "countPolygon - counter: ${counter}"
         if(anyNegative(polygon)) return
         if(isSquare(polygon)) {
             counter['squares'] = counter['squares'] + 1
