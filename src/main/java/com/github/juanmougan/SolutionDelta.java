@@ -1,5 +1,8 @@
 package com.github.juanmougan;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Given a list of numbers as input, e.g. :
 
@@ -22,12 +25,11 @@ package com.github.juanmougan;
  */
 public class SolutionDelta {
 
-    public Integer[] getDelta() {
-        return delta;
-    }
-
     private Integer[] input;
     private Integer[] delta;
+
+    private static final int LIMIT = 128;
+    private static final int TOKEN = -128;
 
     public SolutionDelta(Integer[] input) {
         if (input == null || input.length < 1) {
@@ -42,5 +44,22 @@ public class SolutionDelta {
         for (int higher = 1, lower = 0; higher < input.length && lower < input.length; higher++, lower++) {
             delta[higher] = input[higher] - input[lower];
         }
+    }
+
+    Integer[] escapeDeltaEncoding(Integer[] nonEscaped) {
+        List<Integer> escaped = new ArrayList<>(nonEscaped.length);
+        escaped.add(nonEscaped[0]);
+        for (int i = 1; i < nonEscaped.length; i++) {
+            Integer value = nonEscaped[i];
+            if (Math.abs(value) > LIMIT) {
+                escaped.add(TOKEN);
+            }
+            escaped.add(value);
+        }
+        return escaped.toArray(new Integer[0]);
+    }
+
+    public Integer[] getDelta() {
+        return delta;
     }
 }
