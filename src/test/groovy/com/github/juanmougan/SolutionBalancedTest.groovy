@@ -19,11 +19,29 @@ class SolutionBalancedTest extends GroovyTestCase {
         assertFalse(result)
     }
 
+    void testIsBalancedForCaseWithExtraClosing_itIsNot() {
+        // Given
+        def balanced = new SolutionBalanced()
+        // When
+        def result = balanced.isBalanced("())")
+        // Then
+        assertFalse(result)
+    }
+
     void testIsBalancedForDoubleCase_itIs() {
         // Given
         def balanced = new SolutionBalanced()
         // When
         def result = balanced.isBalanced("()()")
+        // Then
+        assertTrue(result)
+    }
+
+    void testIsBalancedForNestedCaseWithExtraBalancedCase_itIs() {
+        // Given
+        def balanced = new SolutionBalanced()
+        // When
+        def result = balanced.isBalanced("(())()")
         // Then
         assertTrue(result)
     }
@@ -37,13 +55,39 @@ class SolutionBalancedTest extends GroovyTestCase {
         assertFalse(result)
     }
 
-    // FIXME this test is correct?
-    void testIsBalancedForInterleavedCase_itIsNot() {
+    void testIsBalancedForNestedCase_itIs() {
+        // Given
+        def balanced = new SolutionBalanced()
+        // When
+        def result = balanced.isBalanced("(())")
+        // Then
+        assertTrue(result)
+    }
+
+    void testIsBalancedForNestedCase_itIsNot() {
+        // Given
+        def balanced = new SolutionBalanced()
+        // When
+        def result = balanced.isBalanced(")(()")
+        // Then
+        assertFalse(result)
+    }
+
+    void testIsBalancedForRepetitionsInsideBalancedSet_itIs() {
+        // Given
+        def balanced = new SolutionBalanced()
+        // When
+        def result = balanced.isBalanced("(()()()())")
+        // Then
+        assertTrue(result)
+    }
+
+    void testIsBalancedForInterleavedCase_itIs() {
         // Given
         def balanced = new SolutionBalanced()
         // When
         def result = balanced.isBalanced("(()())")
         // Then
-        assertFalse(result)
+        assertTrue(result)
     }
 }

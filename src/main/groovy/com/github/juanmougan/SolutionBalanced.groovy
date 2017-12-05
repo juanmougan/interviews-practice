@@ -17,7 +17,12 @@ class SolutionBalanced {
             if(input[i] == "(") {
                 checkBalance.push(input[i])
             } else {            // can only be ")"
-                checkBalance.pop()
+                if (!checkBalance.isEmpty()) {
+                    checkBalance.pop()
+                } else {
+                    // I can't pop an empty stack
+                    return false
+                }
             }
         }
         return checkBalance.isEmpty()
