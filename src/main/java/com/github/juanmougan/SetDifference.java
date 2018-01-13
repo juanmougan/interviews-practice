@@ -41,6 +41,7 @@ public class SetDifference {
     }
 
     public static void main(String[] args) {
-        new SetDifference().difference("big.csv", "small.csv", "output.csv");
+        final String PREFIX = "src/main/resources/";
+        new SetDifference().difference(PREFIX + "big.csv", PREFIX + "small.csv", PREFIX + "output.csv");
     }
 }

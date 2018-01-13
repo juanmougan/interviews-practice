@@ -123,4 +123,8 @@ buildNumber.properties
 # Avoid ignoring Maven wrapper jar file (.jar files are usually ignored)
 !/.mvn/wrapper/maven-wrapper.jar
 
+src/main/resources/big.csv
+src/main/resources/small.csv
+src/main/resources/output.csv
+
 # End of https://www.gitignore.io/api/java,intellij,macos,maven
