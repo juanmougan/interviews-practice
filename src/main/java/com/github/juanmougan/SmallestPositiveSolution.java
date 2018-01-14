@@ -32,11 +32,8 @@ public class SmallestPositiveSolution {
         // 1. Remove duplicates
         Set<Integer> withoutDuplicates = Arrays.stream(A).boxed().collect(Collectors.toSet());
         // 2. Use a sorted List
-        //List<Integer> input = withoutDuplicates.stream().collect(Collectors.toList());
         List<Integer> input = new ArrayList<>(withoutDuplicates);
         Collections.sort(input);
-        // 2. Define the range to be checked: from 1 un to max element in the List, which is in the last position
-        //IntStream checkableRange = IntStream.rangeClosed(1, input.get(input.size() - 1));
         int i = 0;                  // To iterate over the array
         int candidate = 1;          // The answer won't be less than 1
         boolean found = false;      // Whether I already found the valid candidate
