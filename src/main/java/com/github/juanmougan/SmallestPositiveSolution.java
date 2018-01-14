@@ -40,7 +40,7 @@ public class SmallestPositiveSolution {
         int i = 0;                  // To iterate over the array
         int candidate = 1;          // The answer won't be less than 1
         boolean found = false;      // Whether I already found the valid candidate
-        while (i < input.size() - 1) {
+        while (i < input.size()) {
             if (!found && input.get(i) > 0 && input.get(i) == candidate) {
                 candidate++;
             } else {
