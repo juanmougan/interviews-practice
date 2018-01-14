@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class SmallestPositiveSolutionTest {
 
-    SmallestPositiveSolution solution;
+    private SmallestPositiveSolution solution;
 
     @Before
     public void setUp() throws Exception {
@@ -28,6 +28,36 @@ public class SmallestPositiveSolutionTest {
         int solution = this.solution.solution(A);
         // Then
         assertEquals(5, solution);
+    }
+
+    @Test
+    public void testWithHolesReversed() throws Exception {
+        // Given
+        int[] A = {6, 5, 4, 2, 1};
+        // When
+        int solution = this.solution.solution(A);
+        // Then
+        assertEquals(3, solution);
+    }
+
+    @Test
+    public void testShouldReturnOne() throws Exception {
+        // Given
+        int[] A = {6, 8, 3, 2, 5};
+        // When
+        int solution = this.solution.solution(A);
+        // Then
+        assertEquals(1, solution);
+    }
+
+    @Test
+    public void testOnlyOnes() throws Exception {
+        // Given
+        int[] A = {1, 1, 1};
+        // When
+        int solution = this.solution.solution(A);
+        // Then
+        assertEquals(2, solution);
     }
 
     @Test
